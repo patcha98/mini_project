@@ -14,6 +14,8 @@ int selectMenu(){
     printf("4. 상품삭제\n");
     printf("5. 상품 리스트 파일로 저장\n");
     printf("6. 상품 이름으로 찾기\n");
+    printf("7. 상품 무게로 찾기\n");
+    printf("8. 상품 별점으로 찾기\n");
     printf("0. 종료\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
@@ -59,6 +61,46 @@ void searchProduct(Product *p, int count){
     for(int i = 0; i < count; i ++){
         if(p[i].cost == -1) continue;
         if(strstr(p[i].name, search)){
+            printf("%2d ",i+1);
+            readProduct(p[i]);
+            num ++;
+        }
+    }
+    if(num == 0){
+        printf("\n=> 검색된 데이터가 없습니다! \n");
+    }
+}
+
+void searchProductGram(Product *p, int count){
+    int num = 0;
+    int search;
+
+    printf("검색할 제품의 무게는? ");
+    scanf("%d", search);
+    printf("\n================================\n");
+    for(int i = 0; i < count; i ++){
+        if(p[i].cost == -1) continue;
+        if(strstr(p[i].gram, search)){
+            printf("%2d ",i+1);
+            readProduct(p[i]);
+            num ++;
+        }
+    }
+    if(num == 0){
+        printf("\n=> 검색된 데이터가 없습니다! \n");
+    }
+}
+
+void searchProductStarpoint(Product *p, int count){
+    int num = 0;
+    int search;
+
+    printf("검색할 제품의 별점은? ");
+    scanf("%d", search);
+    printf("\n================================\n");
+    for(int i = 0; i < count; i ++){
+        if(p[i].cost == -1) continue;
+        if(strstr(p[i].starpoint, search)){
             printf("%2d ",i+1);
             readProduct(p[i]);
             num ++;
