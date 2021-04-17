@@ -12,8 +12,10 @@ int addProduct(Product *p); // 제품 추가 함수
 void readProduct(Product p); // 제품 하나를 읽고 출력하는 함수
 int updateProduct(Product *p); // 제품의 내용을 수정하는 함수
 int deleteProduct(Product *p); // 제품을 삭제하는 함수
-void searchProduct(Product *p, int count); // 제품을 찾는 함수
+void searchProduct(Product *p, int count); // 제품중 이름이 일치하는 데이터를 찾는 함수
+void searchProductGram(Product *p, int count); // 제품중 무게가 일치하는 데이터를 찾는 함수
+void searchProductStarpoint(Product *p, int count); // // 제품중 별점이 일치하는 데이터를 찾는 함수
 void listProduct(Product *p, int count); // 제품 전체를 출력하는 함수
 int selectDataNo(Product *p, int count); // 해당 제품의 번호를 찾는 함수
 int loadData(Product *p); // 데이터를 불러오는 함수
-int saveData(Product *p, int count); // 데이터를 저장하는 함수
+void saveData(Product *p, int count); // 데이터를 저장하는 함수

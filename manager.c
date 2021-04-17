@@ -22,6 +22,8 @@ int selectMenu(){
     return menu;
 }
 
+
+
 int addProduct(Product *p){
     printf("제품명은? = ");
     scanf("%s", p->name);
@@ -76,11 +78,11 @@ void searchProductGram(Product *p, int count){
     int search;
 
     printf("검색할 제품의 무게는? ");
-    scanf("%d", search);
+    scanf("%d", &search);
     printf("\n================================\n");
     for(int i = 0; i < count; i ++){
         if(p[i].cost == -1) continue;
-        if(strstr(p[i].gram, search)){
+        if(p[i].gram == search){
             printf("%2d ",i+1);
             readProduct(p[i]);
             num ++;
@@ -96,11 +98,11 @@ void searchProductStarpoint(Product *p, int count){
     int search;
 
     printf("검색할 제품의 별점은? ");
-    scanf("%d", search);
+    scanf("%d", &search);
     printf("\n================================\n");
     for(int i = 0; i < count; i ++){
         if(p[i].cost == -1) continue;
-        if(strstr(p[i].starpoint, search)){
+        if(p[i].starpoint == search){
             printf("%2d ",i+1);
             readProduct(p[i]);
             num ++;
@@ -110,6 +112,8 @@ void searchProductStarpoint(Product *p, int count){
         printf("\n=> 검색된 데이터가 없습니다! \n");
     }
 }
+
+
 
 int updateProduct(Product *p){
     printf("제품명은? = ");
@@ -145,7 +149,7 @@ int deleteProduct(Product *p){
   return 1;
 }
 
-int saveData(Product *p, int count){
+void saveData(Product *p, int count){
     FILE *fp;
       fp = fopen("product.txt", "wt");
       for(int i = 0; i < count; i ++){
@@ -164,12 +168,12 @@ int loadData(Product *p){
         FILE *fp;
         fp = fopen("product.txt", "rt");
         for(i = 0; i < 100; i++){
-            fscanf(fp, "%s", p->name);
+            fscanf(fp, "%s", p[i].name);
             if(feof(fp)) break;
-            fscanf(fp, "%d", &p->cost);
-            fscanf(fp, "%d", &p->gram);
-            fscanf(fp, "%d", &p->starpoint);
-            fscanf(fp, "%d", &p->numberOfstars);
+            fscanf(fp, "%d", &p[i].cost);
+            fscanf(fp, "%d", &p[i].gram);
+            fscanf(fp, "%d", &p[i].starpoint);
+            fscanf(fp, "%d", &p[i].numberOfstars);
             count++;
         }
         fclose(fp);
@@ -180,6 +184,3 @@ int loadData(Product *p){
     }
     return count;
 }
-
-
-

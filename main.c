@@ -57,6 +57,12 @@ int main(void){
         else if (menu == 6){
             searchProduct(plist,index);
         }
+    	else if(menu == 7){
+		searchProductGram(plist,index);
+	}
+	else if (menu == 8){
+		searchProductStarpoint(plist,index);
+	}
     }
     printf("종료됨!\n");
     return 0;
